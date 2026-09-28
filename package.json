@@ -1,0 +1,41 @@
+{
+  "name": "dsh-new-workdir",
+  "version": "0.4.1",
+  "description": "新目录会话：一键在根目录下领一个时间戳工作目录，注册成工作区并开一个干净会话。全程只调用官方 Remote，零官方文件改动。",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node test-smoke.mjs"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "session",
+    "workspace",
+    "workdir"
+  ],
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./src/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "engines": {
+    "node": ">=22.19"
+  }
+}

@@ -1,0 +1,24 @@
+# dsh-new-workdir bundle patch: this plugin's single loader entry.
+#
+# 包名已列在 profile 的 dsh.profile.bundles 里，所以这一行会被自动加载；
+# 不要再往 ~/.dsh/cordis.patch.yml 或 profile 自己的 patch 里插一条同样的
+# id，否则会出现重复 loader entry。
+#
+# enabled: false 时整块功能只留只读展示，mkdir 接口直接拒绝 —— 用来一键
+# 停用而不必卸载插件。
+- insert:
+    - id: new-workdir
+      name: dsh-new-workdir
+      config:
+        enabled: true
+        # root = 主根（也是「默认根」：不带 root 参数的建目录落这里）。不写的话：
+        #   DSH_WORKDIRS 环境变量 → 再没有就 ~/.dsh/workdirs（不再写死 D:/work-harness）
+        root: D:/work-harness
+        # roots = 额外的根（可选，按顺序排在面板里；面板每行一个「在这里新建」）。
+        # 建目录只可能落在 root + roots 这些根里；清理 / 扫尾会每个根都扫一遍；
+        # 请求里传了清单外的 root 会被直接拒（400 ROOT）。
+        # roots:
+        #   - D:/work-sandbox
+        #   - E:/tmp/workdirs
+        # bridgeNewSession: true   # 接管官方「新对话」/ ⌘N（不带工作区 id 的 startSession）：
+        #                          # 也变成「领新目录 + 新工作区 + 新会话」；false = 完全不动官方入口
