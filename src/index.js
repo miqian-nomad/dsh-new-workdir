@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  * dsh-new-workdir — Host half.
  *

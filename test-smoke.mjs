@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 /**
  * dsh-new-workdir 离线冒烟测试（不启动 DSH）。
  *
