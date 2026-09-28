@@ -100,6 +100,10 @@ basename，这里顺手改名成人读格式）。
 **`verdict: clean`，无 high / critical**；唯一的 medium 是 `rmdir` 这一族 —— 它的边界就是上表第一行。
 `rmdir` 在 `src/index.js` 只出现两处，都在 `pruneEmpty()` 内、前面各有一道 `resolveUnderAny()` 闸。
 
+dsh.so 的全仓扫描会额外在 `test-smoke.mjs` 上报一条 warning「向裸 IP 地址发起 HTTP 请求」：
+那是测试自己起的临时 HTTP server（`http://127.0.0.1:<随机端口>`）在做真 TCP 回环测试，
+只跑在 `os.tmpdir()` 的临时目录里，不连任何外部地址 —— 这条是误报，已知并接受。
+
 ---
 
 ## 安装
